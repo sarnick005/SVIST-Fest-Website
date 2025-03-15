@@ -1,5 +1,5 @@
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./Header.jsx";
+import Footer from "./footer.jsx";
 import { useEffect, useState } from "react";
 import {
   Tabs,
@@ -9,10 +9,18 @@ import {
   TabPanel,
   useDisclosure,
 } from "@chakra-ui/react";
-import ProgramCard from "../adminPanel/Detailsnew";
+import ProgramCard from "../adminPanel/Detailsnew.jsx";
 import { Center, Box, Heading, Flex, Image, Text } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
-import Timer from "./Timer.jsx"; // We'll create a new version of the Timer
+import Timer from "./Timer.jsx";
+import { motion, AnimatePresence } from "framer-motion";
+
+// Convert Chakra components to motion components
+const MotionBox = motion(Box);
+const MotionHeading = motion(Heading);
+const MotionImage = motion(Image);
+const MotionFlex = motion(Flex);
+const MotionText = motion(Text);
 
 // New updated Timer component
 const TimerUpdated = ({ selectedDateTime }) => {
@@ -70,105 +78,189 @@ const TimerUpdated = ({ selectedDateTime }) => {
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
   };
 
+  // Animation variants for timer
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300 } },
+  };
+
+  const digitVariants = {
+    initial: { scale: 0.8, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0.8, opacity: 0 },
+  };
+
   return (
-    <Box bg="black" py={8} textAlign="center" position="relative">
+    <MotionBox
+      bg="black"
+      py={8}
+      textAlign="center"
+      position="relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       {isExpired ? (
-        <Box>
-          <Heading
+        <MotionBox
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <MotionHeading
             color="white"
             fontSize={isMobile ? "3xl" : "6xl"}
             mb={4}
             fontWeight="800"
             textTransform="uppercase"
+            initial={{ y: -30 }}
+            animate={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 200 }}
           >
             Day 1
-          </Heading>
-          <Text
+          </MotionHeading>
+          <MotionText
             color="red"
             fontSize={isMobile ? "xl" : "3xl"}
             fontWeight="600"
-            animation="pulse 2s infinite"
-            sx={{
-              "@keyframes pulse": {
-                "0%": { opacity: 0.7 },
-                "50%": { opacity: 1 },
-                "100%": { opacity: 0.7 },
-              },
+            animate={{
+              opacity: [0.7, 1, 0.7],
+              scale: [0.98, 1.02, 0.98],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
             }}
           >
             We Are Live
-          </Text>
-        </Box>
+          </MotionText>
+        </MotionBox>
       ) : (
-        <Box>
-          <Heading color="red" mb={6} fontSize={isMobile ? "2xl" : "4xl"}>
+        <MotionBox variants={containerVariants} initial="hidden" animate="show">
+          <MotionHeading
+            color="red"
+            mb={6}
+            fontSize={isMobile ? "2xl" : "4xl"}
+            variants={itemVariants}
+          >
             ENTHUZEA 2025 Starts In
-          </Heading>
+          </MotionHeading>
 
-          <Flex
+          <MotionFlex
             justifyContent="center"
             alignItems="center"
             mb={4}
             flexWrap="wrap"
             gap={isMobile ? 2 : 4}
+            variants={containerVariants}
           >
-            <Box textAlign="center">
-              <Box style={digitStyle} color="white">
-                {timeRemaining.days}
-              </Box>
+            <MotionBox textAlign="center" variants={itemVariants}>
+              <AnimatePresence mode="wait">
+                <MotionBox
+                  key={timeRemaining.days}
+                  style={digitStyle}
+                  color="white"
+                  variants={digitVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {timeRemaining.days}
+                </MotionBox>
+              </AnimatePresence>
               <Text color="gray.400" fontSize="sm" mt={1}>
                 Days
               </Text>
-            </Box>
+            </MotionBox>
 
             <Text color="white" fontSize={isMobile ? "xl" : "2xl"} mx={1}>
               :
             </Text>
 
-            <Box textAlign="center">
-              <Box style={digitStyle} color="white">
-                {timeRemaining.hours < 10
-                  ? `0${timeRemaining.hours}`
-                  : timeRemaining.hours}
-              </Box>
+            <MotionBox textAlign="center" variants={itemVariants}>
+              <AnimatePresence mode="wait">
+                <MotionBox
+                  key={timeRemaining.hours}
+                  style={digitStyle}
+                  color="white"
+                  variants={digitVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  {timeRemaining.hours < 10
+                    ? `0${timeRemaining.hours}`
+                    : timeRemaining.hours}
+                </MotionBox>
+              </AnimatePresence>
               <Text color="gray.400" fontSize="sm" mt={1}>
                 Hours
               </Text>
-            </Box>
+            </MotionBox>
 
             <Text color="white" fontSize={isMobile ? "xl" : "2xl"} mx={1}>
               :
             </Text>
 
-            <Box textAlign="center">
-              <Box style={digitStyle} color="white">
-                {timeRemaining.minutes < 10
-                  ? `0${timeRemaining.minutes}`
-                  : timeRemaining.minutes}
-              </Box>
+            <MotionBox textAlign="center" variants={itemVariants}>
+              <AnimatePresence mode="wait">
+                <MotionBox
+                  key={timeRemaining.minutes}
+                  style={digitStyle}
+                  color="white"
+                  variants={digitVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  {timeRemaining.minutes < 10
+                    ? `0${timeRemaining.minutes}`
+                    : timeRemaining.minutes}
+                </MotionBox>
+              </AnimatePresence>
               <Text color="gray.400" fontSize="sm" mt={1}>
                 Minutes
               </Text>
-            </Box>
+            </MotionBox>
 
             <Text color="white" fontSize={isMobile ? "xl" : "2xl"} mx={1}>
               :
             </Text>
 
-            <Box textAlign="center">
-              <Box style={digitStyle} color="white">
-                {timeRemaining.seconds < 10
-                  ? `0${timeRemaining.seconds}`
-                  : timeRemaining.seconds}
-              </Box>
+            <MotionBox textAlign="center" variants={itemVariants}>
+              <AnimatePresence mode="wait">
+                <MotionBox
+                  key={timeRemaining.seconds}
+                  style={digitStyle}
+                  color="white"
+                  variants={digitVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  {timeRemaining.seconds < 10
+                    ? `0${timeRemaining.seconds}`
+                    : timeRemaining.seconds}
+                </MotionBox>
+              </AnimatePresence>
               <Text color="gray.400" fontSize="sm" mt={1}>
                 Seconds
               </Text>
-            </Box>
-          </Flex>
-        </Box>
+            </MotionBox>
+          </MotionFlex>
+        </MotionBox>
       )}
-    </Box>
+    </MotionBox>
   );
 };
 
@@ -182,6 +274,39 @@ const Home = () => {
     { src: "img/assets/avisek.png", alt: "Sponsor 4", height: "190px" },
     { src: "img/enthuzea 2022/sponsor5.jpg", alt: "Sponsor 5" },
   ];
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const scaleUp = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 200 },
+    },
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.3 },
+    },
+  };
 
   // Auto-rotate sponsors
   useEffect(() => {
@@ -208,52 +333,63 @@ const Home = () => {
             <div className="row align-items-center justify-content-center">
               <div className="col-xl-12">
                 <div className="slider_text text-center">
-                  <div
+                  <motion.div
                     className="shape_1 wow fadeInUp"
-                    data-wow-duration="1s"
-                    data-wow-delay=".2s"
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7 }}
                   >
                     <img src="img/shape/shape_1.svg" alt=""></img>
-                  </div>
-                  <div
+                  </motion.div>
+                  <motion.div
                     className="shape_2 wow fadeInDown"
-                    data-wow-duration="1s"
-                    data-wow-delay=".2s"
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
                   >
                     <img src="img/shape/shape_2.svg" alt=""></img>
-                  </div>
-                  <span
-                    className="wow fadeInLeft"
-                    data-wow-duration="1s"
-                    data-wow-delay=".3s"
+                  </motion.div>
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
                     style={{
                       fontSize: isMobile ? "150%" : "250%",
                       fontFamily: "cursive",
                       color: "white",
+                      display: "inline-block",
                     }}
                   >
                     Swami Vivekananda Institute Of Science & Technology
-                  </span>
+                  </motion.span>
                   <br></br>
-                  <span
-                    className="wow fadeInLeft"
-                    data-wow-duration="1s"
-                    data-wow-delay=".3s"
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
                     style={{
                       fontSize: isMobile ? "150%" : "250%",
                       fontFamily: "cursive",
+                      display: "inline-block",
                     }}
                   >
                     welcomes you to
-                  </span>
-                  <h3
-                    className="wow fadeInLeft"
-                    data-wow-duration="1s"
-                    data-wow-delay=".4s"
+                  </motion.span>
+                  <motion.h3
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 200,
+                        delay: 0.9,
+                      },
+                    }}
                     style={{ paddingBottom: isMobile ? "55px" : "0px" }}
                   >
                     ENTHUZEA 2025
-                  </h3>
+                  </motion.h3>
                 </div>
               </div>
             </div>
@@ -261,55 +397,66 @@ const Home = () => {
         </div>
       </div>
 
-      <Timer selectedDateTime={new Date(2025, 2, 26)} />
+      <TimerUpdated selectedDateTime={new Date(2025, 2, 26)} />
 
-      <Box bg="black" py={8}>
+      <MotionBox
+        bg="black"
+        py={8}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeIn}
+      >
         <Box maxW="1200px" mx="auto" px={4}>
-          <Image
+          <MotionImage
             w="100%"
             maxH="500px"
             objectFit="contain"
             borderRadius="10px"
             src="img/ENTHUZEA 2024/poster.jpg"
             alt="ENTHUZEA 2025 Poster"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: true }}
           />
         </Box>
-      </Box>
+      </MotionBox>
 
-      <ProgramCard />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeIn}
+      >
+        <ProgramCard />
+      </motion.div>
 
-      <Box bg="black" py={10} px={4}>
-        <Heading
-          textAlign="center"
-          color="red"
-          fontSize={isMobile ? "2xl" : "3xl"}
-          mb={8}
-          borderBottom="2px solid red"
-          pb={2}
-          width="fit-content"
-          mx="auto"
+      <MotionBox
+        maxW="800px"
+        mx="auto"
+        p={4}
+        borderRadius="md"
+        bg="rgba(0,0,0,0.3)"
+        boxShadow="0 4px 20px rgba(0,0,0,0.2)"
+        variants={scaleUp}
+      >
+        <Tabs
+          index={tabIndex}
+          onChange={handleTabsChange}
+          variant="unstyled"
+          isFitted
         >
-          Sponsored By
-        </Heading>
-
-        <Box
-          maxW="800px"
-          mx="auto"
-          p={4}
-          borderRadius="md"
-          bg="rgba(0,0,0,0.3)"
-          boxShadow="0 4px 20px rgba(0,0,0,0.2)"
-        >
-          <Tabs
-            index={tabIndex}
-            onChange={handleTabsChange}
-            variant="unstyled"
-            isFitted
-          >
-            <TabList mb={4} display="flex" justifyContent="center">
-              {sponsorImages.map((_, idx) => (
+          <TabList mb={4} display="flex" justifyContent="center">
+            {sponsorImages.map((_, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <Tab
-                  key={idx}
                   _selected={{ color: "white", bg: "red.500" }}
                   borderRadius="full"
                   size="sm"
@@ -319,33 +466,37 @@ const Home = () => {
                   height="10px"
                   bg="gray.600"
                 />
-              ))}
-            </TabList>
+              </motion.div>
+            ))}
+          </TabList>
 
-            <TabPanels>
-              {sponsorImages.map((sponsor, idx) => (
-                <TabPanel key={idx} p={0}>
-                  <Center>
-                    <Image
+          <TabPanels>
+            {sponsorImages.map((sponsor, idx) => (
+              <TabPanel key={idx} p={0}>
+                <Center>
+                  <AnimatePresence mode="wait">
+                    <MotionImage
+                      key={idx}
                       src={sponsor.src}
                       alt={sponsor.alt}
                       maxWidth={isMobile ? "80%" : "50%"}
                       height={sponsor.height || "auto"}
                       objectFit="contain"
-                      transition="all 0.3s ease"
-                      _hover={{ transform: "scale(1.05)" }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.4 }}
+                      whileHover={{ scale: 1.05 }}
                     />
-                  </Center>
-                </TabPanel>
-              ))}
-            </TabPanels>
-          </Tabs>
-        </Box>
-      </Box>
-
-      <Footer />
+                  </AnimatePresence>
+                </Center>
+              </TabPanel>
+            ))}
+          </TabPanels>
+        </Tabs>
+      </MotionBox>
+      <Footer/>
     </>
   );
 };
-
 export default Home;

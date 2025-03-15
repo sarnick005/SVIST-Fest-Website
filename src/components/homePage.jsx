@@ -6,7 +6,7 @@ const HomePage=()=>{
 const navigate=useNavigate();
 const callHomePage=async()=>{
     try{
-        axios.get('https://fest-backend-wr4i.onrender.com/register', { withCredentials: true })
+        axios.get('', { withCredentials: true })
         .then(response => {
             console.log(response)
             // if(!response.status===201)

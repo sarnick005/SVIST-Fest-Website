@@ -5,6 +5,8 @@ import { useMediaQuery } from "@chakra-ui/react";
 const Timer = ({ selectedDateTime }) => {
   const [countdown, setCountdown] = useState(null);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [eventStarted, setEventStarted] = useState(false);
+  const [dayCount, setDayCount] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,8 +24,17 @@ const Timer = ({ selectedDateTime }) => {
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         setCountdown({ days, hours, minutes, seconds });
+        setEventStarted(false);
       } else {
-        setCountdown("Date must be after today");
+        setEventStarted(true);
+        const daysSinceStart =
+          Math.floor(Math.abs(difference) / (1000 * 60 * 60 * 24)) + 1;
+
+        if (daysSinceStart > 2) {
+          setDayCount(-1);
+        } else {
+          setDayCount(daysSinceStart);
+        }
       }
     }, 1000);
 
@@ -34,29 +45,52 @@ const Timer = ({ selectedDateTime }) => {
     return time < 10 ? `0${time}` : time;
   };
 
+  if (eventStarted) {
+    return (
+      <div className="timer-container">
+        <div className="countdown-container">
+          <div
+            className="countdown"
+            style={{
+              fontSize: isMobile ? "150%" : "200%",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            {dayCount === -1 ? "See you next year!" : `Day ${dayCount}`}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="timer-container" >
+    <div className="timer-container">
       <div className="countdown-container">
         <div className="countdown countdown-days">
-        {/* days */}
-
-          <div className="card" style={{width:"100%"}}>
-            <div data-days className="display days" style={{fontSize:isMobile?"100%":"100%"}}>
+          {/* days */}
+          <div className="card" style={{ width: "100%" }}>
+            <div
+              data-days
+              className="display days"
+              style={{ fontSize: isMobile ? "100%" : "100%" }}
+            >
               {countdown && formatTime(countdown.days)}
             </div>
             <div className="front-display"></div>
             <div className="back-display"></div>
           </div>
-
-
           <div className="display-heading">Days</div>
         </div>
 
-
         {/* hours */}
         <div className="countdown countdown-hours">
-          <div className="card" style={{width:"100%"}}>
-            <div data-hours className="display hours" style={{fontSize:isMobile?"100%":"100%"}}>
+          <div className="card" style={{ width: "100%" }}>
+            <div
+              data-hours
+              className="display hours"
+              style={{ fontSize: isMobile ? "100%" : "100%" }}
+            >
               {countdown && formatTime(countdown.hours)}
             </div>
             <div className="front-display"></div>
@@ -66,8 +100,12 @@ const Timer = ({ selectedDateTime }) => {
         </div>
         {/* minutes */}
         <div className="countdown countdown-minutes">
-          <div className="card" style={{width:"100%"}}>
-            <div data-minutes className="display minutes" style={{fontSize:isMobile?"100%":"100%"}}>
+          <div className="card" style={{ width: "100%" }}>
+            <div
+              data-minutes
+              className="display minutes"
+              style={{ fontSize: isMobile ? "100%" : "100%" }}
+            >
               {countdown && formatTime(countdown.minutes)}
             </div>
             <div className="front-display"></div>
@@ -78,8 +116,12 @@ const Timer = ({ selectedDateTime }) => {
 
         {/* seconds */}
         <div className="countdown countdown-seconds">
-          <div className="card" style={{width:"100%"}}>
-            <div data-seconds className="display seconds" style={{fontSize:isMobile?"100%":"100%"}} >
+          <div className="card" style={{ width: "100%" }}>
+            <div
+              data-seconds
+              className="display seconds"
+              style={{ fontSize: isMobile ? "100%" : "100%" }}
+            >
               {countdown && formatTime(countdown.seconds)}
             </div>
             <div className="front-display"></div>
