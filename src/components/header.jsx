@@ -111,6 +111,7 @@ const Header = ({ color }) => {
             </div>
           </div>
         </div>
+        
       </header>
     </>
   );
