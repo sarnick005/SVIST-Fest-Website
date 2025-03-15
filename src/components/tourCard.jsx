@@ -1,19 +1,11 @@
-import {
-  Card,
-  CardBody,
-  Stack,
-  Heading,
-  Text,
-  Image,
-  Box,
-} from "@chakra-ui/react";
+import { Card, CardBody, Stack, Heading, Image, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 const TourCard = ({ img, text }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Create a Framer Motion component from Chakra UI components
+  // Create Framer Motion components
   const MotionCard = motion(Card);
   const MotionImage = motion(Image);
 
@@ -29,6 +21,10 @@ const TourCard = ({ img, text }) => {
       boxShadow="xl"
       bg="white"
       maxW="sm"
+      transition="transform 0.3s ease"
+      _hover={{
+        transform: "translateY(-4px)",
+      }}
     >
       <MotionCard
         maxW="100%"
@@ -40,8 +36,6 @@ const TourCard = ({ img, text }) => {
         border="none"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        whileHover={{ scale: 0.98 }}
-        transition={{ duration: 0.3 }}
       >
         <CardBody p="0">
           <Box overflow="hidden">
@@ -50,7 +44,7 @@ const TourCard = ({ img, text }) => {
               alt={text || "Tour image"}
               borderRadius="0"
               animate={{
-                scale: isHovered ? 1.1 : 1,
+                scale: isHovered ? 1.05 : 1,
               }}
               transition={{ duration: 0.4 }}
             />
@@ -67,7 +61,6 @@ const TourCard = ({ img, text }) => {
                 {text}
               </Heading>
             </motion.div>
-            <Text></Text>
           </Stack>
         </CardBody>
       </MotionCard>
