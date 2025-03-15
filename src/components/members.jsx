@@ -160,7 +160,7 @@ const Member = () => {
     {
       name: "Dr. Somnath Das",
       designation: "Treasurer",
-      imageSrc: "/public/img/Enthuzea 2025/fest 2024/DSC_0608.JPG",
+      imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0608.JPG",
     },
     {
       name: "Mr. Somnath Roy",
@@ -170,7 +170,7 @@ const Member = () => {
     {
       name: "Dr. Manasi Mukhopadhyay",
       designation: "Coordinator, Cultural Committee",
-      imageSrc: "/public/img/Enthuzea 2025/fest 2024/DSC_0274.JPG",
+      imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0274.JPG",
     },
     {
       name: "Ms. Somasree Bhadra",
@@ -200,7 +200,7 @@ const Member = () => {
     {
       name: "Mr. Santu Banerjee",
       designation: "Co-Coordinator, Volunteer & Hall Management Committee",
-      imageSrc: "/public/img/Enthuzea 2025/fest 2024/DSC_0872.JPG",
+      imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0872.JPG",
     },
     {
       name: "Mr. Koushikk Bhattacharyya",

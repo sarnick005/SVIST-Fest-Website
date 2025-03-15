@@ -112,141 +112,141 @@ const Tour = () => {
     enthu2024: [
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0849.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0849.JPG",
           text: "Mr Freshers 2k24",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0856.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0856.JPG",
           text: "Miss Freshers 2k24",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0647.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0647.JPG",
           text: "Junior Inauguration",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1134.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1134.JPG",
           text: "Students",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0976.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0976.JPG",
           text: "Students",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0085.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0085.JPG",
           text: "Students",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1042.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1042.JPG",
           text: "Dance Performance",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1167.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1167.JPG",
           text: "Folk Song Performance",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0219.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0219.JPG",
           text: "Percussionist",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0766.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0766.JPG",
           text: "Freshers Anchor",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0765.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0765.JPG",
           text: "Freshers Anchor",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0777.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0777.JPG",
           text: "Dance Performance",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0761.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0761.JPG",
           text: "Performance Anchor",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0867.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0867.JPG",
           text: "Dance Performance",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1098.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1098.JPG",
           text: "Singing",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1217.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1217.JPG",
           text: "Addiction Band",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1253.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1253.JPG",
           text: "Guest Performer",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1172.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1172.JPG",
           text: "Addiction Band",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0225.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0225.JPG",
           text: "Band Performance",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0218.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0218.JPG",
           text: "Annanya Chakraborty",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0269.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0269.JPG",
           text: "Band Performance",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0137.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0137.JPG",
           text: "Alumni Performance",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1360.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1360.JPG",
           text: "Ramp Walk",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1340.JPG",
-          text: "Ramp Walk",
-        },
-      ],
-      [
-        {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1327.JPG",
-          text: "Ramp Walk",
-        },
-        {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1298.JPG",
-          text: "Ramp Walk",
-        },
-        {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0002.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1340.JPG",
           text: "Ramp Walk",
         },
       ],
       [
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1301.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1327.JPG",
           text: "Ramp Walk",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1308.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1298.JPG",
           text: "Ramp Walk",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1406.JPG",
+          img: "/img/Enthuzea 2025/fest 2024/DSC_0002.JPG",
+          text: "Ramp Walk",
+        },
+      ],
+      [
+        {
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1301.JPG",
+          text: "Ramp Walk",
+        },
+        {
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1308.JPG",
+          text: "Ramp Walk",
+        },
+        {
+          img: "/img/Enthuzea 2025/fest 2024/DSC_1406.JPG",
           text: "Ramp Walk",
         },
       ],
