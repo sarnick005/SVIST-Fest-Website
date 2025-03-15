@@ -10,3 +10,7 @@
     display: none;
     /* Chrome, Safari, Opera */
 }
+
+body{
+    background-color: black;
+}
