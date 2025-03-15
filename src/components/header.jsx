@@ -23,13 +23,16 @@ const Header = ({ color }) => {
     }
   };
 
-  window.addEventListener("scroll", changeNavbarColor);
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+    return () => {
+      window.removeEventListener("scroll", changeNavbarColor);
+    };
+  }, []);
 
   const handleLogoutButton = async () => {
     try {
-      await axios.post(
-        ""
-      );
+      await axios.post("");
       setIsLoggedIn(false);
       navigate("/");
     } catch (error) {
@@ -54,6 +57,7 @@ const Header = ({ color }) => {
             backgroundAttachment: "fixed",
             position: "fixed",
             height: isMobile ? "15%" : "",
+            transition: "background-color 0.3s ease-in-out", 
           }}
           className="header-area"
         >
