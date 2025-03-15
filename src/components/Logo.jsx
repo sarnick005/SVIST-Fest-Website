@@ -6,7 +6,7 @@ const Logo = ({ isMobile }) => {
       <a href="/">
         <img
           style={{
-            width: isMobile ? "30%" : "50%",
+            width: isMobile ? "35%" : "50%",
             borderRadius: isMobile ? "50px" : "40px",
           }}
           src="./img/logo.png"
