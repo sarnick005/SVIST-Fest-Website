@@ -23,7 +23,7 @@ const TourCard = ({ img, text }) => {
       mt={{ base: "8", md: "10" }}
       position="relative"
       width="100%"
-      maxW={{ base: "280px", md: "320px" }}
+      maxW={{ base: "280px", md: "370px" }}
       mx="auto"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ const TourCard = ({ img, text }) => {
         borderStyle="solid"
         borderRadius="sm"
         bg="white"
-        boxShadow="0 10px 25px -5px rgba(0,0,0,0.3)"
+        boxlhadow="0 10px 25px -5px rgba(0,0,0,0.3)"
         position="relative"
         transform="rotate(-2deg)"
         zIndex="1"
@@ -49,11 +49,11 @@ const TourCard = ({ img, text }) => {
           top: "-12px",
           left: "50%",
           transform: "translateX(-50%)",
-          width: "80px",
+          width: "90px",
           height: "15px",
           bg: "#c41e3a",
           borderRadius: "5px",
-          boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+          boxlhadow: "0 2px 10px rgba(0,0,0,0.2)",
           zIndex: "2",
         }}
         _after={{
@@ -85,7 +85,7 @@ const TourCard = ({ img, text }) => {
             <Box
               overflow="hidden"
               borderRadius="sm"
-              boxShadow="inset 0 0 10px rgba(0,0,0,0.2)"
+              boxlhadow="inset 0 0 10px rgba(0,0,0,0.2)"
             >
               <MotionImage
                 src={img}
@@ -101,7 +101,7 @@ const TourCard = ({ img, text }) => {
               <Stack spacing="1">
                 <motion.div>
                   <Heading
-                    size={{ base: "sm", md: "md" }}
+                    size={{ base: "md", md: "lg" }}
                     textAlign="center"
                     fontFamily="cursive, serif"
                     textShadow="0 1px 2px rgba(0,0,0,0.1)"
@@ -116,7 +116,7 @@ const TourCard = ({ img, text }) => {
                   mt="1"
                   overflow="hidden"
                 >
-                  <Text fontSize="xs" color="gray.600" fontStyle="italic">
+                  <Text fontSize="xl" color="gray.600" fontStyle="italic">
                     {isHovered ? "Tap to view details" : ""}
                   </Text>
                 </MotionBox>
