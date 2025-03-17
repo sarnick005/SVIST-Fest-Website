@@ -72,11 +72,11 @@ const TimerUpdated = ({ selectedDateTime }) => {
     show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300 } },
   };
 
-  const digitVariants = {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.8, opacity: 0 },
-  };
+const digitVariants = {
+  initial: { opacity: 1 }, 
+  animate: { opacity: 1 }, 
+};
+
 
   return (
     <MotionBox
