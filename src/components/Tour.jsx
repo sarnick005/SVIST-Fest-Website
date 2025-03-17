@@ -7,7 +7,7 @@ import {
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
-import TourCard from "./tourCard";
+import TourCard from "./TourCard";
 import Header from "./header";
 import Footer from "./footer";
 import { useState, useEffect } from "react";
