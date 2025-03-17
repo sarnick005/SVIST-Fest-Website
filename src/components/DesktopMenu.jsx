@@ -1,7 +1,14 @@
 import React from "react";
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const DesktopMenu = ({ navigate }) => {
+const DesktopMenu = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Function to check if the current path matches
+  const isActive = (path) => location.pathname === path;
+
   return (
     <div className="col-xl-6 col-lg-6">
       <div className="main-menu d-none d-lg-block">
@@ -12,6 +19,7 @@ const DesktopMenu = ({ navigate }) => {
                 style={{
                   fontFamily: "Arial",
                   fontWeight: "bold",
+                  textDecoration: isActive("/members") ? "underline" : "none",
                 }}
                 href="/members"
               >
@@ -23,6 +31,7 @@ const DesktopMenu = ({ navigate }) => {
                 style={{
                   fontFamily: "Arial",
                   fontWeight: "bold",
+                  textDecoration: isActive("/pasttour") ? "underline" : "none",
                 }}
                 href="/pasttour"
               >
@@ -34,10 +43,11 @@ const DesktopMenu = ({ navigate }) => {
                 style={{
                   fontFamily: "Arial",
                   fontWeight: "bold",
+                  textDecoration: isActive("/about") ? "underline" : "none",
                 }}
                 href="/about"
               >
-                About <i></i>
+                About
               </a>
             </li>
             <Menu>

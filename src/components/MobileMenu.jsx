@@ -18,15 +18,17 @@ import {
   Text,
   Divider,
 } from "@chakra-ui/react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MobileMenu = ({
   isLoggedIn,
   handleGalleryButton,
   handleLogoutButton,
-  navigate,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -35,11 +37,13 @@ const MobileMenu = ({
     { label: "About", href: "/about" },
   ];
 
+  // Function to check if the current path is active
+  const isActive = (path) => location.pathname === path;
+
   return (
     <div className="col-xl-3 col-lg-3 d-lg-block">
       <div className="buy_tkt">
         <div className="book_btn d-lg-block">
-          {/* Original hamburger button preserved */}
           <Button
             style={{
               bottom: "100px",
@@ -96,6 +100,9 @@ const MobileMenu = ({
                         width="100%"
                         py={6}
                         borderRadius="md"
+                        textDecoration={
+                          isActive(item.href) ? "underline" : "none"
+                        }
                         _hover={{
                           bg: "rgba(255,255,255,0.1)",
                           transform: "translateX(4px)",
@@ -161,7 +168,7 @@ const MobileMenu = ({
                 style={{ backgroundColor: "black" }}
                 borderTopWidth="1px"
                 borderColor="rgba(255,0,0,0.3)"
-              ></DrawerFooter>
+              />
             </DrawerContent>
           </Drawer>
         </div>
