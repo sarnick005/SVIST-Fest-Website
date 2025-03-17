@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import axios from "axios";
-import { useAuth } from "./utils/AuthContext";
 import { useMediaQuery } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
@@ -10,7 +8,6 @@ import CountdownTimer from "./CountdownTimer";
 import Logo from "./Logo";
 
 const Header = ({ color }) => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [colorChange, setColorchange] = useState(false);
   const navigate = useNavigate();
@@ -30,22 +27,8 @@ const Header = ({ color }) => {
     };
   }, []);
 
-  const handleLogoutButton = async () => {
-    try {
-      await axios.post("");
-      setIsLoggedIn(false);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed", error);
-    }
-  };
-
-  const handleGalleryButton = async () => {
-    try {
-      navigate("/gallery");
-    } catch (error) {
-      console.error("Navigation failed", error);
-    }
+  const handleGalleryButton = () => {
+    navigate("/gallery");
   };
 
   return (
@@ -57,7 +40,7 @@ const Header = ({ color }) => {
             backgroundAttachment: "fixed",
             position: "fixed",
             height: isMobile ? "15%" : "",
-            transition: "background-color 0.3s ease-in-out", 
+            transition: "background-color 0.3s ease-in-out",
           }}
           className="header-area"
         >
@@ -80,9 +63,7 @@ const Header = ({ color }) => {
 
                   {isMobile ? (
                     <MobileMenu
-                      isLoggedIn={isLoggedIn}
                       handleGalleryButton={handleGalleryButton}
-                      handleLogoutButton={handleLogoutButton}
                       navigate={navigate}
                     />
                   ) : (
@@ -91,14 +72,8 @@ const Header = ({ color }) => {
 
                   <div className="col-xl-3 col-lg-3 d-none d-lg-block">
                     <div className="buy_tkt">
-                      <div
-                        className="book_btn d-none d-lg-block"
-                        style={{ display: isMobile ? "" : "" }}
-                      >
-                        <CountdownTimer
-                          isLoggedIn={isLoggedIn}
-                          handleLogoutButton={handleLogoutButton}
-                        />
+                      <div className="book_btn d-none d-lg-block">
+                        <CountdownTimer />
                       </div>
                     </div>
                   </div>
@@ -111,7 +86,6 @@ const Header = ({ color }) => {
             </div>
           </div>
         </div>
-        
       </header>
     </>
   );
