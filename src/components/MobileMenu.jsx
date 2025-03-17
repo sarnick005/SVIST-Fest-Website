@@ -24,11 +24,12 @@ const MobileMenu = ({
   isLoggedIn,
   handleGalleryButton,
   handleLogoutButton,
+  navigate: propsNavigate,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigate = propsNavigate || useNavigate();
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -41,138 +42,136 @@ const MobileMenu = ({
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="col-xl-3 col-lg-3 d-lg-block">
-      <div className="buy_tkt">
-        <div className="book_btn d-lg-block">
-          <Button
-            style={{
-              bottom: "100px",
-              fontSize: "200%",
-              marginTop: "20px",
-              color: "white",
-            }}
-            ref={btnRef}
-            colorScheme="blackAlpha"
-            onClick={onOpen}
+    <div className="d-flex justify-content-end">
+      <Button
+        style={{
+          color: "white",
+          fontSize: "30px",
+          padding: "0.5rem",
+          background: "transparent",
+        }}
+        ref={btnRef}
+        onClick={onOpen}
+        aria-label="Open menu"
+      >
+        ≡
+      </Button>
+
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        size="xs"
+      >
+        <DrawerOverlay bg="rgba(0,0,0,0.4)" backdropFilter="blur(8px)" />
+        <DrawerContent bg="black" boxShadow="0 0 20px rgba(255,0,0,0.2)">
+          <DrawerCloseButton color="white" size="lg" m={2} />
+          <DrawerHeader
+            bg="black"
+            borderBottomWidth="1px"
+            borderColor="rgba(255,0,0,0.3)"
           >
-            ≡
-          </Button>
+            <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              color="red.500"
+              letterSpacing="wider"
+              textTransform="uppercase"
+              textShadow="0 0 10px rgba(255,0,0,0.5)"
+            >
+              ENTHUZEA
+            </Text>
+          </DrawerHeader>
 
-          <Drawer
-            isOpen={isOpen}
-            placement="right"
-            onClose={onClose}
-            finalFocusRef={btnRef}
-            size="xs"
-          >
-            <DrawerOverlay bg="rgba(0,0,0,0.4)" backdropFilter="blur(8px)" />
-            <DrawerContent bg="black" boxShadow="0 0 20px rgba(255,0,0,0.2)">
-              <DrawerCloseButton color="white" size="lg" m={2} />
-              <DrawerHeader
-                bg="black"
-                borderBottomWidth="1px"
-                borderColor="rgba(255,0,0,0.3)"
-              >
-                <Text
-                  fontSize="2xl"
-                  fontWeight="bold"
-                  color="red.500"
-                  letterSpacing="wider"
-                  textTransform="uppercase"
-                  textShadow="0 0 10px rgba(255,0,0,0.5)"
-                >
-                  ENTHUZEA
-                </Text>
-              </DrawerHeader>
-
-              <DrawerBody pt={4} style={{ backgroundColor: "black" }}>
-                <Flex direction="column" gap={2}>
-                  {menuItems.map((item, index) => (
-                    <Box key={index} transition="all 0.3s ease">
-                      <Button
-                        as="a"
-                        href={item.href}
-                        variant="ghost"
-                        colorScheme="whiteAlpha"
-                        color="white"
-                        justifyContent="flex-start"
-                        fontWeight="medium"
-                        width="100%"
-                        py={6}
-                        borderRadius="md"
-                        textDecoration={
-                          isActive(item.href) ? "underline" : "none"
-                        }
-                        _hover={{
-                          bg: "rgba(255,255,255,0.1)",
-                          transform: "translateX(4px)",
-                        }}
-                      >
-                        {item.label}
-                      </Button>
-                    </Box>
-                  ))}
-
-                  <Divider my={2} borderColor="rgba(255,255,255,0.2)" />
-
-                  <Menu>
-                    <MenuButton
-                      as={Button}
-                      variant="ghost"
-                      colorScheme="whiteAlpha"
-                      color="white"
-                      width="100%"
-                      justifyContent="space-between"
-                      fontWeight="medium"
-                      py={6}
-                      borderRadius="md"
-                      _hover={{ bg: "rgba(255,255,255,0.1)" }}
-                    >
-                      Events
-                    </MenuButton>
-                    <MenuList bg="gray.800" borderColor="gray.700">
-                      <MenuItem
-                        onClick={() => navigate("/events")}
-                        bg="transparent"
-                        color="white"
-                        _hover={{ bg: "rgba(255,255,255,0.1)" }}
-                      >
-                        Fest Info
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() => navigate("/dept")}
-                        bg="transparent"
-                        color="white"
-                        _hover={{ bg: "rgba(255,255,255,0.1)" }}
-                      >
-                        Dept. Info
-                      </MenuItem>
-                    </MenuList>
-                  </Menu>
-
+          <DrawerBody pt={4} style={{ backgroundColor: "black" }}>
+            <Flex direction="column" gap={2}>
+              {menuItems.map((item, index) => (
+                <Box key={index} transition="all 0.3s ease">
                   <Button
-                    colorScheme="red"
-                    variant="solid"
-                    mt={2}
+                    as="a"
+                    href={item.href}
+                    variant="ghost"
+                    colorScheme="whiteAlpha"
+                    color="white"
+                    justifyContent="flex-start"
+                    fontWeight="medium"
+                    width="100%"
                     py={6}
-                    _hover={{ bg: "red.600" }}
-                    _active={{ bg: "red.700" }}
-                    onClick={() => navigate("/pasttour")}
+                    borderRadius="md"
+                    textDecoration={isActive(item.href) ? "underline" : "none"}
+                    _hover={{
+                      bg: "rgba(255,255,255,0.1)",
+                      transform: "translateX(4px)",
+                    }}
                   >
-                    Gallery
+                    {item.label}
                   </Button>
-                </Flex>
-              </DrawerBody>
+                </Box>
+              ))}
 
-              <DrawerFooter
-                style={{ backgroundColor: "black" }}
-                borderTopWidth="1px"
-                borderColor="rgba(255,0,0,0.3)"
-              />
-            </DrawerContent>
-          </Drawer>
-        </div>
-      </div>
+              <Divider my={2} borderColor="rgba(255,255,255,0.2)" />
+
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  variant="ghost"
+                  colorScheme="whiteAlpha"
+                  color="white"
+                  width="100%"
+                  justifyContent="space-between"
+                  fontWeight="medium"
+                  py={6}
+                  borderRadius="md"
+                  _hover={{ bg: "rgba(255,255,255,0.1)" }}
+                >
+                  Events
+                </MenuButton>
+                <MenuList bg="gray.800" borderColor="gray.700">
+                  <MenuItem
+                    onClick={() => navigate("/events")}
+                    bg="transparent"
+                    color="white"
+                    _hover={{ bg: "rgba(255,255,255,0.1)" }}
+                  >
+                    Fest Info
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => navigate("/dept")}
+                    bg="transparent"
+                    color="white"
+                    _hover={{ bg: "rgba(255,255,255,0.1)" }}
+                  >
+                    Dept. Info
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+
+              <Button
+                colorScheme="red"
+                variant="solid"
+                mt={2}
+                py={6}
+                _hover={{ bg: "red.600" }}
+                _active={{ bg: "red.700" }}
+                onClick={() =>
+                  handleGalleryButton
+                    ? handleGalleryButton()
+                    : navigate("/pasttour")
+                }
+              >
+                Gallery
+              </Button>
+            </Flex>
+          </DrawerBody>
+
+          <DrawerFooter
+            style={{ backgroundColor: "black" }}
+            borderTopWidth="1px"
+            borderColor="rgba(255,0,0,0.3)"
+          />
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };

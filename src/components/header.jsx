@@ -32,44 +32,47 @@ const Header = ({ color }) => {
   };
 
   return (
-    <>
-      <header>
+    <header>
+      <div
+        style={{
+          backgroundColor: colorChange ? "black" : color,
+          position: "fixed",
+          width: "100%",
+          top: 0,
+          left: 0,
+          zIndex: 1000,
+          transition: "background-color 0.3s ease-in-out",
+        }}
+        className="header-area"
+      >
         <div
           style={{
-            backgroundColor: colorChange ? "black" : color,
-            backgroundAttachment: "fixed",
-            position: "fixed",
-            height: isMobile ? "15%" : "",
-            transition: "background-color 0.3s ease-in-out",
+            height: isMobile ? "70px" : "100px",
+            display: "flex",
+            alignItems: "center",
           }}
-          className="header-area"
+          id="sticky-header"
+          className="main-header-area"
         >
-          <div
-            style={{
-              height: "150px",
-            }}
-            id="sticky-header"
-            className="main-header-area"
-          >
-            <div className="container">
-              <div className="header_bottom_border">
-                <div className="row align-items-center">
-                  <div
-                    className="col-xl-3 col-lg-3"
-                    style={{ display: "inline" }}
-                  >
-                    <Logo isMobile={isMobile} />
-                  </div>
+          <div className="container">
+            <div className="header_bottom_border">
+              <div className="row align-items-center">
+                <div className="col-xl-3 col-lg-3 col-6">
+                  <Logo isMobile={isMobile} />
+                </div>
 
-                  {isMobile ? (
+                {isMobile ? (
+                  <div className="col-6">
                     <MobileMenu
                       handleGalleryButton={handleGalleryButton}
                       navigate={navigate}
                     />
-                  ) : (
-                    <DesktopMenu navigate={navigate} />
-                  )}
+                  </div>
+                ) : (
+                  <DesktopMenu navigate={navigate} />
+                )}
 
+                {!isMobile && (
                   <div className="col-xl-3 col-lg-3 d-none d-lg-block">
                     <div className="buy_tkt">
                       <div className="book_btn d-none d-lg-block">
@@ -77,17 +80,13 @@ const Header = ({ color }) => {
                       </div>
                     </div>
                   </div>
-
-                  <div className="col-12">
-                    <div className="mobile_menu d-block d-lg-none"></div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };
 

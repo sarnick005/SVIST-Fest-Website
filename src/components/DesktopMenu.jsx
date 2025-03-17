@@ -13,8 +13,8 @@ const DesktopMenu = () => {
     <div className="col-xl-6 col-lg-6">
       <div className="main-menu d-none d-lg-block">
         <nav>
-          <ul id="navigation">
-            <li style={{ padding: "0%" }}>
+          <ul id="navigation" style={{ marginTop: "-10px" }}>
+            <li style={{ padding: "5px 0" }}>
               <a
                 style={{
                   fontFamily: "Arial",
@@ -26,7 +26,7 @@ const DesktopMenu = () => {
                 Member
               </a>
             </li>
-            <li style={{ padding: "0%" }}>
+            <li style={{ padding: "5px 0" }}>
               <a
                 style={{
                   fontFamily: "Arial",
@@ -38,7 +38,7 @@ const DesktopMenu = () => {
                 Past Tour
               </a>
             </li>
-            <li style={{ padding: "0%" }}>
+            <li style={{ padding: "5px 0" }}>
               <a
                 style={{
                   fontFamily: "Arial",
@@ -51,7 +51,9 @@ const DesktopMenu = () => {
               </a>
             </li>
             <Menu>
-              <MenuButton as={Button}>Events</MenuButton>
+              <MenuButton as={Button} style={{ marginTop: "-5px" }}>
+                Events
+              </MenuButton>
               <MenuList>
                 <MenuItem onClick={() => navigate("/events")}>
                   Fest Info
