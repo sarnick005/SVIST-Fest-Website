@@ -54,7 +54,7 @@ const PublishPost = () => {
       postData.append("description", formData.description);
       postData.append("caption", formData.caption);
 
-      const response = await axios.post("https://fest-backend-wr4i.onrender.com/api/v1/posts", postData, {
+      const response = await axios.post("", postData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

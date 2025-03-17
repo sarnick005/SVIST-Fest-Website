@@ -15,7 +15,7 @@ const Login = () => {
     try {
       // console.log(email);
       // console.log(password);
-      const response = await axios.post("https://fest-backend-wr4i.onrender.com/api/v1/users/login", {
+      const response = await axios.post("", {
         email,
         password,
       });
@@ -23,7 +23,7 @@ const Login = () => {
       if (response.data.success) {
         toast.success("Login successful!");
         // Fetch posts after successful login
-        const postsResponse = await axios.get("https://fest-backend-wr4i.onrender.com/api/v1/posts");
+        const postsResponse = await axios.get("");
         const posts = postsResponse.data.data.allPosts;
         const sortedPosts = posts.sort(
           (a, b) => new Date(a.createdAt) - new Date(b.createdAt)

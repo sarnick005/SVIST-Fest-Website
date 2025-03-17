@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const response = await axios.get("https://fest-backend-wr4i.onrender.com/api/v1/users/current-user");
+        const response = await axios.get("");
         if (response.data.success) {
           setIsLoggedIn(true);
         } else {

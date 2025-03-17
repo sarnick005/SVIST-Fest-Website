@@ -9,7 +9,7 @@ const Logout = () => {
 
   const handleLogoutButton = async () => {
     try {
-      await axios.post('https://fest-backend-wr4i.onrender.com/api/v1/users/logout');
+      await axios.post('');
       setIsLoggedIn(false);
       navigate("/");
     } catch (error) {

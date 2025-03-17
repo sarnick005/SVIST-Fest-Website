@@ -17,7 +17,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://fest-backend-wr4i.onrender.com/api/v1/users/register", {
+      const response = await axios.post("", {
         username,
         email,
         department,

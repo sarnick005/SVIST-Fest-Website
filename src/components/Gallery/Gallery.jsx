@@ -46,7 +46,7 @@ const Gallery = () => {
 
     const fetchLoggedInUser = async () => {
       try {
-        const response = await axios.get("https://fest-backend-wr4i.onrender.com/api/v1/users/current-user");
+        const response = await axios.get("");
         const user = response.data.data;
         setLoggedInUserId(user._id);
         setLoggedInUserType(user.userType);
@@ -64,7 +64,7 @@ const Gallery = () => {
 
   const handleDeleteButton = async (postId) => {
     try {
-      await axios.delete(`https://fest-backend-wr4i.onrender.com/api/v1/posts/delete/${postId}`);
+      await axios.delete(``);
       setGalleryPosts((prevPosts) =>
         prevPosts.filter((post) => post._id !== postId)
       );
