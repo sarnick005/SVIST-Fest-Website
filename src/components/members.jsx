@@ -1,65 +1,85 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "./header";
 import Footer from "./footer";
 
-// Profile Card Component for displaying individual profiles
-const ProfileCard = ({ name, designation, imageSrc, additionalInfo }) => {
+// Lazy loading component for media
+const LazyMedia = ({ mediaType, mediaSrc, title, onLoad }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const mediaId = `media-${mediaSrc.replace(/[^a-zA-Z0-9]/g, "-")}`;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    const currentElement = document.getElementById(mediaId);
+    if (currentElement) {
+      observer.observe(currentElement);
+    }
+
+    return () => {
+      if (currentElement) observer.disconnect();
+    };
+  }, [mediaSrc, mediaId]);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+    if (onLoad) onLoad();
+  };
+
   return (
-    <motion.div
-      className="single_propram"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="inner_wrap">
-        <div className="circle_img"></div>
-        <div className="porgram_top">
-          <span
-            className="wow fadeInLeft"
-            data-wow-duration="1s"
-            data-wow-delay=".3s"
-            style={{ fontFamily: "Arial", fontWeight: "bold" }}
-          >
-            {name}
-          </span>
-          <h4
-            className="wow fadeInUp"
-            data-wow-duration="1s"
-            data-wow-delay=".4s"
-            style={{ fontFamily: "Arial", fontWeight: "bold" }}
-          >
-            {designation}
-          </h4>
-        </div>
-        <div
-          className="thumb wow fadeInUp"
-          data-wow-duration="1s"
-          data-wow-delay=".5s"
-        >
-          {imageSrc.endsWith(".mp4") ? (
-            <VideoThumbnail videoSrc={imageSrc} />
-          ) : (
-            <img src={imageSrc} alt={name} loading="lazy" />
+    <div id={mediaId} className="media-container">
+      {isInView && (
+        <>
+          {!isLoaded && (
+            <div className="placeholder-loader">
+              <div className="loading-spinner"></div>
+            </div>
           )}
-        </div>
-        {additionalInfo && (
-          <h4
-            className="wow fadeInUp"
-            data-wow-duration="1s"
-            data-wow-delay=".6s"
-            style={{ fontFamily: "Arial", fontWeight: "bold" }}
-          >
-            {additionalInfo}
-          </h4>
-        )}
-      </div>
-    </motion.div>
+          {mediaType === "video" ? (
+            <VideoThumbnail
+              videoSrc={mediaSrc}
+              onLoad={handleLoad}
+              style={{ opacity: isLoaded ? 1 : 0 }}
+            />
+          ) : (
+            <img
+              src={mediaSrc}
+              alt={title}
+              onLoad={handleLoad}
+              style={{ opacity: isLoaded ? 1 : 0 }}
+              loading="lazy"
+            />
+          )}
+        </>
+      )}
+    </div>
   );
 };
 
+// Section Title component with animation
+const SectionTitle = ({ title }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true, margin: "-50px" }}
+    className="section_title text-center mb-80"
+  >
+    <h3 style={{ fontFamily: "Arial", fontWeight: "bold" }}>{title}</h3>
+  </motion.div>
+);
+
 // Video Thumbnail Component with play/pause functionality
-const VideoThumbnail = ({ videoSrc }) => {
+const VideoThumbnail = ({ videoSrc, onLoad }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -72,16 +92,91 @@ const VideoThumbnail = ({ videoSrc }) => {
     setIsPlaying(!isPlaying);
   };
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener("loadeddata", () => {
+        if (onLoad) onLoad();
+      });
+    }
+  }, [onLoad]);
+
   return (
     <video
       ref={videoRef}
       onClick={togglePlay}
       width="640"
       height="360"
-      loading="lazy"
+      preload="metadata"
     >
       <source src={videoSrc} type="video/mp4" />
     </video>
+  );
+};
+
+// Profile Card Component for displaying individual profiles
+const ProfileCard = ({
+  name,
+  designation,
+  imageSrc,
+  additionalInfo,
+  index,
+}) => {
+  return (
+    <motion.div
+      className="single_propram"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      <div className="inner_wrap">
+        <div className="circle_img"></div>
+        <div className="porgram_top">
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+            viewport={{ once: true }}
+            style={{ fontFamily: "Arial", fontWeight: "bold" }}
+          >
+            {name}
+          </motion.span>
+          <motion.h4
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+            viewport={{ once: true }}
+            style={{ fontFamily: "Arial", fontWeight: "bold" }}
+          >
+            {designation}
+          </motion.h4>
+        </div>
+        <motion.div
+          className="thumb"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+          viewport={{ once: true }}
+        >
+          <LazyMedia
+            mediaType={imageSrc.endsWith(".mp4") ? "video" : "image"}
+            mediaSrc={imageSrc}
+            title={name}
+          />
+        </motion.div>
+        {additionalInfo && (
+          <motion.h4
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+            viewport={{ once: true }}
+            style={{ fontFamily: "Arial", fontWeight: "bold" }}
+          >
+            {additionalInfo}
+          </motion.h4>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
@@ -91,21 +186,14 @@ const ProfileSection = ({ title, profiles }) => {
     <motion.div
       className="program_details_area detials_bg_1 overlay2"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div
-              className="section_title text-center mb-80 wow fadeInRight"
-              data-wow-duration="1s"
-              data-wow-delay=".3s"
-            >
-              <h3 style={{ fontFamily: "Arial", fontWeight: "bold" }}>
-                {title}
-              </h3>
-            </div>
+            <SectionTitle title={title} />
           </div>
         </div>
         <div className="row justify-content-center">
@@ -114,6 +202,7 @@ const ProfileSection = ({ title, profiles }) => {
               {profiles.map((profile, index) => (
                 <ProfileCard
                   key={index}
+                  index={index}
                   name={profile.name}
                   designation={profile.designation}
                   imageSrc={profile.imageSrc}
