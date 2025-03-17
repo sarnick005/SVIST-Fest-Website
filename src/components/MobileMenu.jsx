@@ -21,7 +21,6 @@ import {
 import { useLocation, useNavigate } from "react-router-dom";
 
 const MobileMenu = ({
-  isLoggedIn,
   handleGalleryButton,
   handleLogoutButton,
   navigate: propsNavigate,
@@ -38,7 +37,6 @@ const MobileMenu = ({
     { label: "About", href: "/about" },
   ];
 
-  // Function to check if the current path is active
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -99,7 +97,14 @@ const MobileMenu = ({
                     width="100%"
                     py={6}
                     borderRadius="md"
-                    textDecoration={isActive(item.href) ? "underline" : "none"}
+                    sx={{
+                      textDecoration: isActive(item.href)
+                        ? "underline"
+                        : "none",
+                      textDecorationThickness: "2px",
+                      textUnderlineOffset: "4px",
+                      textDecorationColor: "white",
+                    }}
                     _hover={{
                       bg: "rgba(255,255,255,0.1)",
                       transform: "translateX(4px)",
@@ -124,6 +129,15 @@ const MobileMenu = ({
                   py={6}
                   borderRadius="md"
                   _hover={{ bg: "rgba(255,255,255,0.1)" }}
+                  sx={{
+                    textDecoration:
+                      isActive("/events") || isActive("/dept")
+                        ? "underline"
+                        : "none",
+                    textDecorationThickness: "2px",
+                    textUnderlineOffset: "4px",
+                    textDecorationColor: "white",
+                  }}
                 >
                   Events
                 </MenuButton>
@@ -154,11 +168,16 @@ const MobileMenu = ({
                 py={6}
                 _hover={{ bg: "red.600" }}
                 _active={{ bg: "red.700" }}
-                onClick={() =>
-                  handleGalleryButton
-                    ? handleGalleryButton()
-                    : navigate("/pasttour")
-                }
+                onClick={() => {
+                  navigate("/pasttour");
+                  onClose(); // Close the drawer after navigation
+                }}
+                sx={{
+                  textDecoration: isActive("/pasttour") ? "underline" : "none",
+                  textDecorationThickness: "2px",
+                  textUnderlineOffset: "4px",
+                  textDecorationColor: "white",
+                }}
               >
                 Gallery
               </Button>
