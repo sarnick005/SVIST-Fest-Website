@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FaCaretDown } from "react-icons/fa"; // Add the downward arrow icon
 
 const DesktopMenu = () => {
   const location = useLocation();
@@ -45,44 +46,70 @@ const DesktopMenu = () => {
               </a>
             </li>
             <Menu>
-              <MenuButton
-                as={Button}
-                style={{
-                  marginTop: "-5px",
-                  fontFamily: "Arial",
-                  fontWeight: "bold",
-                  textDecoration: isEventsActive() ? "underline" : "none",
-                  textUnderlineOffset: "4px",
-                  textDecorationThickness: "2px",
-                  textDecorationColor: "black",
-                }}
-              >
-                Events
-              </MenuButton>
-              <MenuList>
-                <MenuItem
-                  onClick={() => navigate("/events")}
-                  style={{
-                    fontWeight: isActive("/events") ? "bold" : "normal",
-                    backgroundColor: isActive("/events")
-                      ? "rgba(0,0,0,0.05)"
-                      : "transparent",
-                  }}
-                >
-                  Fest Info
-                </MenuItem>
-                <MenuItem
-                  onClick={() => navigate("/dept")}
-                  style={{
-                    fontWeight: isActive("/dept") ? "bold" : "normal",
-                    backgroundColor: isActive("/dept")
-                      ? "rgba(0,0,0,0.05)"
-                      : "transparent",
-                  }}
-                >
-                  Dept. Info
-                </MenuItem>
-              </MenuList>
+              {({ isOpen }) => (
+                <>
+                  <MenuButton
+                    as={Button}
+                    rightIcon={
+                      <FaCaretDown
+                        style={{
+                          transition: "transform 0.3s ease", // Smooth transition for rotation
+                          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", // Rotate arrow when menu is open
+                        }}
+                      />
+                    } // Rotate the arrow based on `isOpen`
+                    sx={{
+                      marginTop: "-5px",
+                      fontFamily: "Arial",
+                      fontWeight: "bold",
+                      textDecoration: isEventsActive() ? "underline" : "none",
+                      textUnderlineOffset: "4px",
+                      textDecorationThickness: "2px",
+                      textDecorationColor: "black", // Default underline color
+                      color: "white", // Set text color to white
+                      backgroundColor: "transparent", // No background
+                      border: "none", // No border
+                      padding: "8px 16px", // Padding for better spacing
+                      fontSize: "16px", // Font size for better readability
+                      _hover: {
+                        backgroundColor: "transparent", // Keep background transparent on hover
+                        color: "red", // Change text color to red on hover
+                      },
+                      _active: {
+                        backgroundColor: "transparent", // Keep background transparent when active
+                        textDecorationColor: "white", // White underline on active
+                        textDecoration: "underline", // Underline on active
+                      },
+                    }}
+                  >
+                    Events
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem
+                      onClick={() => navigate("/events")}
+                      style={{
+                        fontWeight: isActive("/events") ? "bold" : "normal",
+                        backgroundColor: isActive("/events")
+                          ? "rgba(0,0,0,0.05)"
+                          : "transparent",
+                      }}
+                    >
+                      Fest Info
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => navigate("/dept")}
+                      style={{
+                        fontWeight: isActive("/dept") ? "bold" : "normal",
+                        backgroundColor: isActive("/dept")
+                          ? "rgba(0,0,0,0.05)"
+                          : "transparent",
+                      }}
+                    >
+                      Dept. Info
+                    </MenuItem>
+                  </MenuList>
+                </>
+              )}
             </Menu>
           </ul>
         </nav>
