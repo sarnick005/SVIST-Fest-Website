@@ -166,8 +166,8 @@ const UpdatedEvents = () => {
                 transform={isMobile ? "none" : "rotate(-2deg)"}
               >
                 <img
-                  src="img/assets/ananyaxbohemianbaul.jpg"
-                  alt="Ananya x Bohemian Baul"
+                  src="/public/img/Enthuzea 2025/band 2025/bullet b1.jpg"
+                  alt="Bullet and Bohemian"
                   style={{
                     width: "100%",
                     height: "auto",
@@ -186,8 +186,8 @@ const UpdatedEvents = () => {
                 transform={isMobile ? "none" : "rotate(2deg)"}
               >
                 <img
-                  src="img/assets/lokoexpress.jpg"
-                  alt="Loko Express"
+                  src="/public/img/Enthuzea 2025/band 2025/trap.jpg"
+                  alt="Trap"
                   style={{
                     width: "100%",
                     height: "auto",

@@ -34,13 +34,13 @@ const Body = () => {
               <div className="program_detail_wrap">
                 {[
                   {
-                    title: "Ananya X Bohemian Baul is here",
-                    imgSrc: "img/assets/poster1.jpg",
-                    date: "25 May",
+                    title: "Bullet and Bohemian is here",
+                    imgSrc: "/public/img/Enthuzea 2025/band 2025/bullet b1.jpg",
+                    date: "March 26, 2025",
                   },
                   {
-                    title: "Loko Express is also here",
-                    imgSrc: "img/assets/poster2.jpg",
+                    title: "Trap is also here",
+                    imgSrc: "/public/img/Enthuzea 2025/band 2025/trap.jpg",
                     date: "24 May",
                   },
                   {

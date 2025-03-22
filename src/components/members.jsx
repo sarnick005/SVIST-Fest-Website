@@ -241,31 +241,31 @@ const Member = () => {
       designation: "Convener",
       imageSrc: "img/enthu/smp.jpg",
     },
-    {
-      name: "Dr. Anindya Sundar Das",
-      designation: "Joint Convener",
-      imageSrc: "img/enthu/asb.jpg",
-    },
+    // {
+    //   name: "Dr. Anindya Sundar Das",
+    //   designation: "Joint Convener",
+    //   imageSrc: "img/enthu/asb.jpg",
+    // },
     {
       name: "Dr. Somnath Das",
-      designation: "Treasurer",
+      designation: "Joint convener & Treasurer",
       imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0608.JPG",
     },
     {
       name: "Mr. Somnath Roy",
-      designation: "joint-Treasurer",
+      designation: "Joint - Treasurer",
       imageSrc: "img/enthu/stnew.jpg",
     },
     {
       name: "Dr. Manasi Mukhopadhyay",
-      designation: "Coordinator, Cultural Committee",
+      designation: "Cultural head",
       imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0274.JPG",
     },
-    {
-      name: "Ms. Somasree Bhadra",
-      designation: "Co-Coordinator, Cultural Committee",
-      imageSrc: "img/enthu/sm.jpg",
-    },
+    // {
+    //   name: "Ms. Somasree Bhadra",
+    //   designation: "Co-Coordinator, Cultural Committee",
+    //   imageSrc: "img/enthu/sm.jpg",
+    // },
     {
       name: "Dr. Arpan Dutta",
       designation: "Co-Coordinator, Cultural Committee",
@@ -273,7 +273,7 @@ const Member = () => {
     },
     {
       name: "Dr. Subhrajyoti Dey",
-      designation: "Coordinator, Prize Distribution Committee",
+      designation: "Co-Coordinator, Prize Distribution Committee",
       imageSrc: "img/enthu/sbh.jpg",
     },
     {
@@ -288,39 +288,39 @@ const Member = () => {
     },
     {
       name: "Mr. Santu Banerjee",
-      designation: "Co-Coordinator, Volunteer & Hall Management Committee",
+      designation: "Students Volunteer Management",
       imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0872.JPG",
     },
     {
       name: "Mr. Koushikk Bhattacharyya",
-      designation: "Editor-in-Chief, Website",
-      imageSrc: "img/enthu/koushikk.jpg",
+      designation: "Website & Digital Promotion",
+      imageSrc: "/public/img/Enthuzea 2025/member/kbh sir.jpg",
     },
   ];
 
   // Developer profiles data
   const developerProfiles = [
     {
-      name: "Ayan Nandi",
+      name: "Rajarshi Mondal",
       designation: "CSE 3rd year",
-      imageSrc: "img/developers/dev4.mp4",
-      additionalInfo: "Web Developer",
+      imageSrc: "/public/img/Enthuzea 2025/member/rajarshi.jpg",
+      additionalInfo: "Hosting and Coordinator",
     },
     {
       name: "Shubhayan Bagchi",
-      designation: "CSE 2nd year",
+      designation: "CSE 3rd year",
       imageSrc: "img/developers/dev 3.jpeg",
       additionalInfo: "Web Developer",
     },
     {
       name: "Sarnick Chakraborty",
-      designation: "CSE 2nd year",
+      designation: "CSE 3rd year",
       imageSrc: "img/developers/dev 2.jpeg",
       additionalInfo: "Web Developer",
     },
     {
       name: "Subhakash Paul",
-      designation: "CSE 2nd year",
+      designation: "CSE 3rd year",
       imageSrc: "img/developers/dev 1.jpg",
       additionalInfo: "Web Developer",
     },
@@ -329,14 +329,34 @@ const Member = () => {
   // Special thanks profiles data
   const specialThanksProfiles = [
     {
-      name: "Barsho Ghosh",
+      name: "Anubhab Ghoshal",
       designation: "GS, Student Union, SVIST",
-      imageSrc: "img/enthu/barsho.jpg",
+      imageSrc: "img/assets/ags.JPG",
     },
     {
-      name: "Anubhab Ghoshal",
-      designation: "AGS, Student Union, SVIST",
-      imageSrc: "img/assets/ags.JPG",
+      name: "Rajarshi Mondal",
+      designation: "Member of AGS Forum, CSE",
+      imageSrc: "/img/Enthuzea 2025/member/rajarshi.jpg",
+    },
+    {
+      name: "Manish Talukdar",
+      designation: "Member of AGS Forum, ECE",
+      imageSrc: "/img/Enthuzea 2025/member/Manish.jpg",
+    },
+    {
+      name: "Pritish Das",
+      designation: "Member of AGS Forum, EEE",
+      imageSrc: "/img/Enthuzea 2025/member/Pritish.jpg",
+    },
+    {
+      name: "Arnab Roy",
+      designation: "Member of AGS Forum, ME",
+      imageSrc: "/img/Enthuzea 2025/member/Arnob.jpg",
+    },
+    {
+      name: "Argha Jyoti Mondal",
+      designation: "Member of AGS Forum, CE",
+      imageSrc: "/img/Enthuzea 2025/member/Argho.jpg",
     },
   ];
 

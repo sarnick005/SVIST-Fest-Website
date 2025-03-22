@@ -38,7 +38,7 @@ const HeaderBanner = () => {
                     display: "inline-block",
                   }}
                 >
-                  Swami Vivekananda Institute Of Science & Technology
+                  Swami Vivekananda Institute of Science & Technology
                 </motion.span>
                 <br></br>
                 <motion.span
@@ -51,7 +51,7 @@ const HeaderBanner = () => {
                     display: "inline-block",
                   }}
                 >
-                  welcomes you to
+                 ~ welcomes you to ~
                 </motion.span>
                 <motion.h3
                   initial={{ opacity: 0, scale: 0.8 }}
