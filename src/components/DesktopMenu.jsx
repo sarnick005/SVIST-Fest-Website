@@ -70,7 +70,7 @@ const DesktopMenu = () => {
                       backgroundColor: "transparent", // No background
                       border: "none", // No border
                       padding: "8px 16px", // Padding for better spacing
-                      fontSize: "16px", // Font size for better readability
+                      fontSize: "22px", // Font size for better readability
                       _hover: {
                         backgroundColor: "transparent", // Keep background transparent on hover
                         color: "red", // Change text color to red on hover
