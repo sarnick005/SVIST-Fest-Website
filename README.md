@@ -22,8 +22,8 @@
 ### Clone and Setup Repository
 1. Clone the repository:
    ```sh
-   git clone <repository-url>
-   cd <repository-name>
+   git clone https://github.com/sarnick005/SVIST-Fest-Website
+   cd SVIST-Fest-Website
    ```
 2. Install dependencies:
    ```sh
