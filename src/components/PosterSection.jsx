@@ -30,7 +30,7 @@ const PosterSection = () => {
             objectFit: "contain",
             borderRadius: "10px",
           }}
-          src="/img/Enthuzea 2025/banner/BANNER.png"
+          src="/img/Enthuzea 2025/banner/BANNER.jpg"
           alt="ENTHUZEA 2025 Poster"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
