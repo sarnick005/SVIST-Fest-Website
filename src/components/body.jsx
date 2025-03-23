@@ -41,7 +41,7 @@ const Body = () => {
                   {
                     title: "T.R.A.P. is also here",
                     imgSrc: "/img/Enthuzea 2025/band 2025/trap.jpg",
-                    date: "24 May",
+                    date: "March 27, 2025",
                   },
                   {
                     title: "Mesmerizing Dance performances💃",
