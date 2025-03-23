@@ -9,41 +9,102 @@ const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionFlex = motion(Flex);
 
-const TimerUpdated = ({ selectedDateTime }) => {
+const EventDayMessage = ({
+  dayNumber,
+  isMobile,
+  containerVariants,
+  itemVariants,
+}) => {
+  return (
+    <MotionBox variants={containerVariants} initial="hidden" animate="show">
+      <MotionHeading
+        color="green.400"
+        mb={6}
+        fontSize={isMobile ? "3xl" : "5xl"}
+        variants={itemVariants}
+      >
+        ENTHUZEA 2025
+      </MotionHeading>
+      <MotionHeading
+        color="white"
+        mb={6}
+        fontSize={isMobile ? "2xl" : "4xl"}
+        variants={itemVariants}
+      >
+        Day {dayNumber}
+      </MotionHeading>
+    </MotionBox>
+  );
+};
+
+const EventEndedMessage = ({ isMobile, containerVariants, itemVariants }) => {
+  return (
+    <MotionBox variants={containerVariants} initial="hidden" animate="show">
+      <MotionHeading
+        color="purple.400"
+        mb={6}
+        fontSize={isMobile ? "3xl" : "5xl"}
+        variants={itemVariants}
+      >
+        ENTHUZEA 2025
+      </MotionHeading>
+      <MotionHeading
+        color="white"
+        mb={6}
+        fontSize={isMobile ? "2xl" : "4xl"}
+        variants={itemVariants}
+      >
+        See You Next Year!
+      </MotionHeading>
+    </MotionBox>
+  );
+};
+
+const TimerUpdated = ({ selectedDateTime, eventDuration = 2 }) => {
   const [timeRemaining, setTimeRemaining] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  const [isExpired, setIsExpired] = useState(false);
+  const [eventStatus, setEventStatus] = useState("countdown");
   const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [currentDay, setCurrentDay] = useState(0);
 
   useEffect(() => {
-    const calculateTimeRemaining = () => {
+    const calculateTimeStatus = () => {
       const now = new Date();
-      const difference = selectedDateTime - now;
+      const eventStart = new Date(selectedDateTime);
+      const difference = eventStart - now;
 
-      if (difference <= 0) {
-        setIsExpired(true);
-        return;
+      const msPerDay = 24 * 60 * 60 * 1000;
+      const daysSinceStart = Math.floor((now - eventStart) / msPerDay) + 1;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (difference % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeRemaining({ days, hours, minutes, seconds });
+        setEventStatus("countdown");
+      } else if (daysSinceStart <= eventDuration) {
+        setCurrentDay(daysSinceStart);
+        setEventStatus("inProgress");
+      } else {
+        setEventStatus("ended");
       }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      setTimeRemaining({ days, hours, minutes, seconds });
     };
 
-    calculateTimeRemaining();
-    const interval = setInterval(calculateTimeRemaining, 1000);
+    calculateTimeStatus();
+    const interval = setInterval(calculateTimeStatus, 1000);
 
     return () => clearInterval(interval);
-  }, [selectedDateTime]);
+  }, [selectedDateTime, eventDuration]);
 
   const digitStyle = {
     display: "inline-block",
@@ -72,11 +133,11 @@ const TimerUpdated = ({ selectedDateTime }) => {
     show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300 } },
   };
 
-const digitVariants = {
-  initial: { opacity: 1 }, 
-  animate: { opacity: 1 }, 
-};
-
+  const digitVariants = {
+    initial: { opacity: 1 },
+    animate: { opacity: 1 },
+    exit: { opacity: 1 },
+  };
 
   return (
     <MotionBox
@@ -88,18 +149,38 @@ const digitVariants = {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {isExpired ? (
-        <ExpiredMessage isMobile={isMobile} />
-      ) : (
-        <TimerDisplay
-          timeRemaining={timeRemaining}
-          containerVariants={containerVariants}
-          itemVariants={itemVariants}
-          digitVariants={digitVariants}
-          digitStyle={digitStyle}
-          isMobile={isMobile}
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {eventStatus === "countdown" && (
+          <TimerDisplay
+            key="countdown"
+            timeRemaining={timeRemaining}
+            containerVariants={containerVariants}
+            itemVariants={itemVariants}
+            digitVariants={digitVariants}
+            digitStyle={digitStyle}
+            isMobile={isMobile}
+          />
+        )}
+
+        {eventStatus === "inProgress" && (
+          <EventDayMessage
+            key="event-day"
+            dayNumber={currentDay}
+            isMobile={isMobile}
+            containerVariants={containerVariants}
+            itemVariants={itemVariants}
+          />
+        )}
+
+        {eventStatus === "ended" && (
+          <EventEndedMessage
+            key="event-ended"
+            isMobile={isMobile}
+            containerVariants={containerVariants}
+            itemVariants={itemVariants}
+          />
+        )}
+      </AnimatePresence>
     </MotionBox>
   );
 };
