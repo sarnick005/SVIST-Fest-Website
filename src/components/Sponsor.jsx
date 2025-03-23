@@ -13,8 +13,8 @@ const Sponsor = () => {
     // { src: "img/assets/riq.jpeg", alt: "Sponsor 1" },
     // { src: "img/assets/tea.jpeg", alt: "Sponsor 2" },
     // { src: "img/assets/zill.JPEG", alt: "Sponsor 3" },
-    { src: "/public/img/Enthuzea 2025/sponsors/AVISHEK MESS.png", alt: "Sponsor 1", height: "190px" },
-    { src: "/public/img/Enthuzea 2025/sponsors/sp2.png", alt: "Sponsor 2", height: "190px" },
+    { src: "/img/Enthuzea 2025/sponsors/AVISHEK MESS.png", alt: "Sponsor 1", height: "190px" },
+    { src: "/img/Enthuzea 2025/sponsors/sp2.png", alt: "Sponsor 2", height: "190px" },
   ];
 
   const scaleUp = {

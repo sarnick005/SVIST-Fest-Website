@@ -294,7 +294,7 @@ const Member = () => {
     {
       name: "Mr. Koushikk Bhattacharyya",
       designation: "Website & Digital Promotion",
-      imageSrc: "/public/img/Enthuzea 2025/member/kbh sir.jpg",
+      imageSrc: "/img/Enthuzea 2025/member/kbh sir.jpg",
     },
   ];
 
@@ -303,7 +303,7 @@ const Member = () => {
     {
       name: "Rajarshi Mondal",
       designation: "CSE 3rd year",
-      imageSrc: "/public/img/Enthuzea 2025/member/rajarshi.jpg",
+      imageSrc: "/img/Enthuzea 2025/member/rajarshi.jpg",
       additionalInfo: "Hosting and Coordinator",
     },
     {

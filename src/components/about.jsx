@@ -36,7 +36,7 @@ const About = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1 }}
               >
-                <img src="/public/img/Enthuzea 2025/invitation card/Invitation letter.jpg" alt="Invitation" />
+                <img src="/img/Enthuzea 2025/invitation card/Invitation letter.jpg" alt="Invitation" />
               </motion.div>
             </div>
 

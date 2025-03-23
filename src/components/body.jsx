@@ -35,12 +35,12 @@ const Body = () => {
                 {[
                   {
                     title: "Bullet and Bohemian is here",
-                    imgSrc: "/public/img/Enthuzea 2025/band 2025/bullet b1.jpg",
+                    imgSrc: "/img/Enthuzea 2025/band 2025/bullet b1.jpg",
                     date: "March 26, 2025",
                   },
                   {
                     title: "Trap is also here",
-                    imgSrc: "/public/img/Enthuzea 2025/band 2025/trap.jpg",
+                    imgSrc: "/img/Enthuzea 2025/band 2025/trap.jpg",
                     date: "24 May",
                   },
                   {
