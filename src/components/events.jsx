@@ -139,7 +139,7 @@ const UpdatedEvents = () => {
               overflow="hidden"
             >
               <img
-                src="/img/Enthuzea 2025/banner/BANNER2.png"
+                src="/img/Enthuzea 2025/banner/BANNER.jpg"
                 alt="Enthuzea 2025 Poster"
                 style={{
                   width: "100%",
