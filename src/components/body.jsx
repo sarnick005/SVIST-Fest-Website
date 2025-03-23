@@ -39,7 +39,7 @@ const Body = () => {
                     date: "March 26, 2025",
                   },
                   {
-                    title: "Trap is also here",
+                    title: "T.R.A.P. is also here",
                     imgSrc: "/img/Enthuzea 2025/band 2025/trap.jpg",
                     date: "24 May",
                   },

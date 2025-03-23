@@ -27,8 +27,8 @@ const Dept = () => {
     { name: "ME Dept.", pdfPath: "img/brochure/ME.pdf", downloadName: "ME" },
     {
       name: "AI & DS Dept.",
-      pdfPath: "img/brochure/ME.pdf",
-      downloadName: "ME",
+      pdfPath: "img/brochure/AI&DS.pdf",
+      downloadName: "AI&DS",
     },
   ];
 

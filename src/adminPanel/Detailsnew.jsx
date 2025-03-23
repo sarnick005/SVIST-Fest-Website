@@ -153,23 +153,30 @@ const Details = () => {
     },
     {
       align: "right",
+      title: "Bullet B One",
+      mediaType: "image",
+      mediaSrc: "/public/img/Enthuzea 2025/band 2025/band1.jpg",
+      description: "Bullet",
+    },
+    {
+      align: "right",
+      title: "T.R.A.P.",
+      mediaType: "image",
+      mediaSrc: "/public/img/Enthuzea 2025/band 2025/band2.jpg",
+      description: "Arijit Paul",
+    },
+    {
+      align: "right",
       title: "Dancing Program",
       mediaType: "image",
       mediaSrc: "/img/Enthuzea 2025/fest 2024/DSC_0805.JPG",
       description: "First year dance performance",
     },
     {
-      align: "right",
-      title: "Band Performance",
-      mediaType: "image",
-      mediaSrc: "/img/Enthuzea 2025/fest 2024/DSC_0218.JPG",
-      description: "Annanya Chakraborty",
-    },
-    {
       align: "left",
       title: "Addiction Band",
       mediaType: "image",
-      mediaSrc: "/img/Enthuzea 2025/fest 2024/DSC_1271.JPG",
+      mediaSrc: "/img/Enthuzea 2025/band 2025/addiction.jpg",
       description: "Enjoy the musical melody",
     },
   ];
