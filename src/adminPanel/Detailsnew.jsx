@@ -176,7 +176,7 @@ const Details = () => {
       align: "left",
       title: "Addiction Band",
       mediaType: "image",
-      mediaSrc: "/img/Enthuzea 2025/band 2025/addiction.jpg",
+      mediaSrc: "/img/Enthuzea 2025/fest 2024/DSC_1271.JPG",
       description: "Enjoy the musical melody",
     },
   ];
