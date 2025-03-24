@@ -18,6 +18,7 @@ const TimerDigit = ({
     <MotionBox textAlign="center" variants={variants}>
       <AnimatePresence mode="wait">
         <MotionBox
+          fontSize="lg"
           key={value}
           style={digitStyle}
           color="white"
