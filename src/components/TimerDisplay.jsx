@@ -42,7 +42,15 @@ const TimerDisplay = ({
           digitStyle={digitStyle}
         />
 
-        <Text color="white" fontSize={isMobile ? "xl" : "2xl"} mx={1}>
+        <Text
+          color="white"
+          fontSize={isMobile ? "xl" : "2xl"}
+          mx={1}
+          display="flex"
+          alignItems="center"
+          height={isMobile ? "45px" : "60px"}
+           marginTop="-30px"
+        >
           :
         </Text>
 
@@ -55,7 +63,15 @@ const TimerDisplay = ({
           padZero={true}
         />
 
-        <Text color="white" fontSize={isMobile ? "xl" : "2xl"} mx={1}>
+        <Text
+          color="white"
+          fontSize={isMobile ? "xl" : "2xl"}
+          mx={1}
+          display="flex"
+          alignItems="center"
+          height={isMobile ? "45px" : "60px"}
+           marginTop="-30px"
+        >
           :
         </Text>
 
@@ -68,7 +84,15 @@ const TimerDisplay = ({
           padZero={true}
         />
 
-        <Text color="white" fontSize={isMobile ? "xl" : "2xl"} mx={1}>
+        <Text
+          color="white"
+          fontSize={isMobile ? "xl" : "2xl"}
+          mx={1}
+          display="flex"
+          alignItems="center"
+          height={isMobile ? "45px" : "60px"}
+           marginTop="-30px"
+        >
           :
         </Text>
 
