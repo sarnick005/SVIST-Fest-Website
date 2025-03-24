@@ -15,13 +15,38 @@ const EventDayMessage = ({
   containerVariants,
   itemVariants,
 }) => {
+  const [colorIndex, setColorIndex] = useState(0);
+
+  const vibgyorColors = [
+    "#FF5733", 
+    "#FFCC00", 
+    "#33FF57", 
+    "#33CFFF", 
+    "#FF33A8", 
+    "#8D33FF", 
+    "#FF3333", 
+    "#00FFCC", 
+    "#FFD700", 
+    "#FF6600", 
+    "#00FF00", 
+    "#FF1493", 
+  ];
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setColorIndex((prevIndex) => (prevIndex + 1) % vibgyorColors.length);
+    }, 500);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <MotionBox variants={containerVariants} initial="hidden" animate="show">
       <MotionHeading
-        color="green.400"
+        color={vibgyorColors[colorIndex]}
         mb={6}
         fontSize={isMobile ? "3xl" : "5xl"}
         variants={itemVariants}
+        transition={{ duration: 0.3 }}
       >
         ENTHUZEA 2025
       </MotionHeading>
