@@ -48,7 +48,7 @@ const EventDayMessage = ({
         variants={itemVariants}
         transition={{ duration: 0.3 }}
       >
-        ENTHUZEA 2025
+        ENTHUZEA 2025 is Live
       </MotionHeading>
       <MotionHeading
         color="white"
