@@ -292,7 +292,7 @@ const Member = () => {
       imageSrc: "/img/Enthuzea 2025/fest 2024/DSC_0872.JPG",
     },
     {
-      name: "Mr. Koushikk Bhattacharyya",
+      name: "Dr. Koushikk Bhattacharyya",
       designation: "Website & Digital Promotion",
       imageSrc: "/img/Enthuzea 2025/member/kbh sir.jpg",
     },
