@@ -336,7 +336,7 @@ const Member = () => {
     {
       name: "Supriyo Hazra",
       designation: "EEE 4th year",
-      imageSrc: "/img/Enthuzea 2025/member/pr2.jpeg.",
+      imageSrc: "/img/Enthuzea 2025/member/pr2.jpeg",
       additionalInfo: "PR Member",
     },
     {
