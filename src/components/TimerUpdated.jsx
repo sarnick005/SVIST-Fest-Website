@@ -53,7 +53,7 @@ const EventDayMessage = ({
       <MotionHeading
         color="white"
         mb={6}
-        fontSize={isMobile ? "2xl" : "4xl"}
+        fontSize={isMobile ? "6xl" : "8xl"}
         variants={itemVariants}
       >
         Day {dayNumber}
