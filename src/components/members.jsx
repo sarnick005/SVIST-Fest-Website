@@ -325,6 +325,33 @@ const Member = () => {
       additionalInfo: "Web Developer",
     },
   ];
+  // PR Team data
+  const prProfiles = [
+    {
+      name: "Subhra Pritam Sardar",
+      designation: "CE 4th year",
+      imageSrc: "/img/Enthuzea 2025/member/pr1.jpeg",
+      additionalInfo: "PR Member",
+    },
+    {
+      name: "Supriyo Hazra",
+      designation: "EEE 4th year",
+      imageSrc: "/img/Enthuzea 2025/member/pr2.jpeg.",
+      additionalInfo: "PR Member",
+    },
+    {
+      name: "Saheli Srimani",
+      designation: "EEE 4th year",
+      imageSrc: "/img/Enthuzea 2025/member/pr3.jpeg",
+      additionalInfo: "PR Member",
+    },
+    {
+      name: "Aniket Saha",
+      designation: "CSE 4th year",
+      imageSrc: "/img/Enthuzea 2025/member/pr4.jpeg",
+      additionalInfo: "PR Member",
+    },
+  ];
 
   // Special thanks profiles data
   const specialThanksProfiles = [
@@ -368,6 +395,10 @@ const Member = () => {
       <ProfileSection
         title="Website Development"
         profiles={developerProfiles}
+      />
+      <ProfileSection
+        title="PR Members"
+        profiles={prProfiles}
       />
       <ProfileSection title="Special Thanks" profiles={specialThanksProfiles} />
       <Footer />
