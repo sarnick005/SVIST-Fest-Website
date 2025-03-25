@@ -162,7 +162,7 @@ const Tour = () => {
           text: "Freshers Anchor",
         },
         {
-          img: "/public/img/Enthuzea 2025/fest 2024/DSC_1419.JPG",
+          img: "/public/img/Enthuzea 2025/fest 2024/DSC_0777.JPG",
           text: "Dance Performance",
         },
       ],
