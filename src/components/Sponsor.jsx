@@ -15,6 +15,8 @@ const Sponsor = () => {
     // { src: "img/assets/zill.JPEG", alt: "Sponsor 3" },
     { src: "/img/Enthuzea 2025/sponsors/AVISHEK MESS.png", alt: "Sponsor 1", height: "190px" },
     { src: "/img/Enthuzea 2025/sponsors/sp2.png", alt: "Sponsor 2", height: "190px" },
+    { src: "/img/Enthuzea 2025/sponsors/sp3.jpg", alt: "Sponsor 3", height: "190px" },
+    { src: "/img/Enthuzea 2025/sponsors/sp4.jpg", alt: "Sponsor 4", height: "190px" },
   ];
 
   const scaleUp = {
